@@ -42,4 +42,22 @@ router.post("/signup", async (req, res) => {
     .send("well Done");
 });
 
+router.post("/login", async (req, res) => {
+  const schema = Joi.object({
+    email: Joi.string().min(6).required().email(),
+    password: Joi.string().min(6).required(),
+  });
+
+  const { error } = schema.validate(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  let admin = await Admin.findOne({ email: req.body.email });
+  if (!admin) return res.status(400).send("Invalid email or password.");
+  const validPassword = await bcrypt.compare(req.body.password, admin.password);
+  if (!validPassword) return res.status(400).send("Invalid email or password.");
+  const token = admin.generateAuthToken();
+  console.log(admin);
+  res.send(token);
+});
+
 module.exports = router;
