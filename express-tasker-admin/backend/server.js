@@ -3,6 +3,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const config = require("config");
 
+const adminRouter = require("./routes/admin");
+
 require("dotenv").config();
 
 if (!config.get("jwtPrivateKey")) {
@@ -20,4 +22,10 @@ mongoose.connect(uri, { useNewUrlParser: true });
 const connection = mongoose.connection;
 connection.once("open", () => {
   console.log("MongoDB database connection established successfully");
+});
+
+app.use("/admin", adminRouter);
+
+app.listen(port, () => {
+  console.log(`Server is running on port: ${port}`);
 });
