@@ -1,9 +1,8 @@
-import React, { Component } from "react";
-import { Link, NavLink } from "react-router-dom";
-import { Redirect } from "react-router-dom";
+import React from "react";
+
 import Form from "../common/form";
 import FooterSmall from "../Footer/Footer";
-import "./login.css";
+
 import Joi from "joi-browser";
 import auth from "../../services/auth";
 

@@ -9,6 +9,8 @@ import Dashboard from "../component/Dashboard/Dashboard";
 import LogOut from "../component/LogOut/logout";
 import VerificationRequest from "../component/VerficationRequests/verificationRequest";
 import CustomerComplaints from "../component/CustomerComplaint/customerComplaint";
+import AddAdmin from "../component/AddAdmin/addAdmin";
+import ServiceProviderComplaints from "../component/ServiceProviderComplaints/serviceProviderComplaints";
 
 export default function Admin() {
   return (
@@ -24,17 +26,19 @@ export default function Admin() {
             exact
             component={VerificationRequest}
           />
+          <Route path="/admin/addadmin" exact component={AddAdmin} />
           <Route
             path="/admin/customercomplaints"
             exact
             component={CustomerComplaints}
           />
-          {/* <Route path="/admin/maps" exact component={Maps} />
-                  <Route path="/admin/settings" exact component={Settings} />
-                  <Route path="/admin/tables" exact component={Tables} /> */}
+          <Route
+            path="/admin/serviceprovidercomplaints"
+            exact
+            component={ServiceProviderComplaints}
+          />
           <Redirect from="/" to="/admin/dashboard" />
         </Switch>
-        {/* <FooterAdmin /> */}
       </div>
     </>
   );
