@@ -12,6 +12,8 @@ class App extends Component {
     this.setState({ user });
   }
   render() {
+    const { user } = this.state;
+
     return <div className="App">{routes}</div>;
   }
 }

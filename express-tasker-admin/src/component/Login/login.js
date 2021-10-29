@@ -1,9 +1,40 @@
 import React, { Component } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Redirect } from "react-router-dom";
+import Form from "../common/form";
 import FooterSmall from "../Footer/Footer";
 import "./login.css";
-class Login extends Component {
+import Joi from "joi-browser";
+import auth from "../../services/auth";
+
+class Login extends Form {
+  state = {
+    data: { email: "", password: "" },
+    errors: {},
+    active: false,
+  };
+
+  schema = {
+    email: Joi.string().required().label("Email"),
+    password: Joi.string().required().label("Password"),
+  };
+
+  doSubmit = async () => {
+    try {
+      const { data } = this.state;
+      await auth.login(data.email, data.password);
+
+      const { state } = this.props.location;
+      window.location = state ? state.from.pathname : "/";
+    } catch (ex) {
+      if (ex.response && ex.response.status === 400) {
+        const errors = { ...this.state.errors };
+        errors.email = ex.response.data;
+        this.setState({ errors });
+      }
+    }
+  };
+
   render() {
     return (
       <main>
@@ -24,43 +55,11 @@ class Login extends Component {
                   </div>
 
                   <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-                    <form>
-                      <div className="relative w-full mb-3">
-                        <label
-                          className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                          htmlFor="grid-password"
-                        >
-                          Email
-                        </label>
-                        <input
-                          type="email"
-                          className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          placeholder="Email"
-                        />
-                      </div>
+                    <form onSubmit={this.handleSubmit}>
+                      {this.renderInput("email", "Email")}
+                      {this.renderInput("password", "Password", "password")}
 
-                      <div className="relative w-full mb-3">
-                        <label
-                          className="block uppercase text-blueGray-600 text-xs font-bold mb-2"
-                          htmlFor="grid-password"
-                        >
-                          Password
-                        </label>
-                        <input
-                          type="password"
-                          className="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                          placeholder="Password"
-                        />
-                      </div>
-
-                      <div className="text-center mt-6">
-                        <button
-                          className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                          type="button"
-                        >
-                          Sign In
-                        </button>
-                      </div>
+                      {this.renderButton("Login")}
                     </form>
                   </div>
                 </div>
