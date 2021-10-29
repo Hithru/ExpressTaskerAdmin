@@ -6,7 +6,9 @@ import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import Login from "./component/Login/login";
-import Sidebar from "./component/Sidebar/sidebar";
+
+import Admin from "./layouts/Admin";
+
 class App extends Component {
   state = {};
 
@@ -22,14 +24,13 @@ class App extends Component {
       <div className="App">
         {!user && (
           <Switch>
-            <Route path="/login" component={Login} />
             <Route path="/" component={Login} />
           </Switch>
         )}
         {user && (
-          <div>
-            <Sidebar />
-          </div>
+          <Switch>
+            <Route path="/" component={Admin} />
+          </Switch>
         )}
       </div>
     );
