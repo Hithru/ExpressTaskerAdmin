@@ -4,6 +4,8 @@ import Form from "../common/form";
 
 import Joi from "joi-browser";
 import auth from "../../services/auth";
+import addAdmin from "../../services/addAdmin";
+import { register } from "./../../services/addAdmin";
 
 class AddAdmin extends Form {
   state = {
@@ -13,17 +15,16 @@ class AddAdmin extends Form {
   };
 
   schema = {
+    username: Joi.string().required().label("UserName"),
     email: Joi.string().required().label("Email"),
     password: Joi.string().required().label("Password"),
   };
 
   doSubmit = async () => {
     try {
-      const { data } = this.state;
-      await auth.login(data.email, data.password);
-
-      const { state } = this.props.location;
-      window.location = state ? state.from.pathname : "/";
+      const response = await addAdmin.register(this.state.data);
+      console.log("work");
+      window.location = "/";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };
@@ -45,10 +46,16 @@ class AddAdmin extends Form {
             </div>
           </div>
           <div className="flex-auto px-4 lg:px-10 py-10 pt-0">
-            <form>
+            <form onSubmit={this.handleSubmit}>
               <h6 className="text-blueGray-400 text-sm mt-3 mb-6 font-bold uppercase">
                 Admin Information
               </h6>
+
+              {this.renderInput("username", "UserName")}
+              {this.renderInput("email", "Email")}
+              {this.renderInput("password", "Password", "password")}
+
+              {this.renderButton("Add Admin")}
             </form>
           </div>
         </div>
