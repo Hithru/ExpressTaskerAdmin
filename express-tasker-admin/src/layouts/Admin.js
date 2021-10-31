@@ -11,6 +11,7 @@ import VerificationRequest from "../component/VerficationRequests/verificationRe
 import CustomerComplaints from "../component/CustomerComplaint/customerComplaint";
 import AddAdmin from "../component/AddAdmin/addAdmin";
 import ServiceProviderComplaints from "../component/ServiceProviderComplaints/serviceProviderComplaints";
+import Admins from "../component/Admins/admins";
 
 export default function Admin() {
   return (
@@ -37,6 +38,7 @@ export default function Admin() {
             exact
             component={ServiceProviderComplaints}
           />
+          <Route path="/admin/admins" exact component={Admins} />
           <Redirect from="/" to="/admin/dashboard" />
         </Switch>
       </div>
