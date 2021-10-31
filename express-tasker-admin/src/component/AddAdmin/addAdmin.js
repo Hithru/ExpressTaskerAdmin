@@ -4,8 +4,7 @@ import Form from "../common/form";
 
 import Joi from "joi-browser";
 import auth from "../../services/auth";
-import addAdmin from "../../services/addAdmin";
-import { register } from "./../../services/addAdmin";
+import Admin from "../../services/Admin";
 
 class AddAdmin extends Form {
   state = {
@@ -22,9 +21,9 @@ class AddAdmin extends Form {
 
   doSubmit = async () => {
     try {
-      const response = await addAdmin.register(this.state.data);
+      const response = await Admin.register(this.state.data);
       console.log("work");
-      window.location = "/";
+      window.location = "/admin/admins";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };

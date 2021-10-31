@@ -60,4 +60,11 @@ router.post("/login", async (req, res) => {
   res.send(token);
 });
 
+router.post("/admins", async (req, res) => {
+  const admins = await Admin.find().sort("username");
+
+  console.log(admins);
+  res.send(admins);
+});
+
 module.exports = router;

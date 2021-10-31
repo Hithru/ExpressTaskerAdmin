@@ -1,7 +1,22 @@
 import React, { Component } from "react";
+import Admin from "../../services/Admin";
 
 class Admins extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      admins: [],
+    };
+  }
+
+  async componentDidMount() {
+    const adminsArray = await Admin.getAdmins();
+    const admins = adminsArray.data;
+    this.setState({ admins });
+  }
   render() {
+    const { admins } = this.state;
     return (
       <div className="flex flex-wrap mt-4">
         <div className="rounded-t bg-white mb-0 px-6 py-6">
@@ -33,6 +48,18 @@ class Admins extends Component {
                 </th>
               </tr>
             </thead>
+            <tbody>
+              {admins.map((item) => (
+                <tr>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                    {item.username}
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                    {item.email}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </div>
       </div>
