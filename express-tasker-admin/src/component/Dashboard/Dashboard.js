@@ -56,7 +56,7 @@ export default function Dashboard() {
                   statArrow="up"
                   statPercent="3000"
                   statPercentColor="text-emerald-500"
-                  statDescripiron="Verified"
+                  statDescripiron="Verified Users"
                   statIconName="fas fa-users"
                   statIconColor="bg-lightBlue-500"
                 />

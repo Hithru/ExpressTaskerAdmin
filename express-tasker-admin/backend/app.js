@@ -27,10 +27,9 @@ if (process.env.NODE_ENV !== "test") {
     console.log("MongoDB database connection established successfully");
   });
 }
+
 app.use("/admin", adminRouter);
 app.use("/customer", customerComplaintRouter);
 app.use("/serviceProvider", serviceProviderComplaintRouter);
 
-app.listen(port, () => {
-  console.log(`Server is running on port: ${port}`);
-});
+module.exports = app;
