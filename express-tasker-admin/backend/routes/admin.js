@@ -20,7 +20,7 @@ router.post("/signup", async (req, res) => {
   console.log("user exist pass");
 
   const username = req.body.username;
-  const email = req.body.email;
+  const email = req.body.email.toLowerCase();
   const password = req.body.password;
 
   admin = new Admin({
@@ -51,7 +51,7 @@ router.post("/login", async (req, res) => {
   const { error } = schema.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  let admin = await Admin.findOne({ email: req.body.email });
+  let admin = await Admin.findOne({ email: req.body.email.toLowerCase() });
   if (!admin) return res.status(400).send("Invalid email or password.");
   const validPassword = await bcrypt.compare(req.body.password, admin.password);
   if (!validPassword) return res.status(400).send("Invalid email or password.");
