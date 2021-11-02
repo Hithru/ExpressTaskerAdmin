@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const config = require("config");
 
 const adminRouter = require("./routes/admin");
+const customerComplaintRouter = require("./routes/customer");
 
 require("dotenv").config();
 
@@ -25,6 +26,7 @@ connection.once("open", () => {
 });
 
 app.use("/admin", adminRouter);
+app.use("/customer", customerComplaintRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
