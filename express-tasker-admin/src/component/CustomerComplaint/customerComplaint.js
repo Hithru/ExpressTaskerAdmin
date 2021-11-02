@@ -88,8 +88,11 @@ class CustomerComplaints extends Component {
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                     {item.customer_email}
                   </td>
-                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                    <pre>{item.description}</pre>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left ">
+                    <pre>
+                      {item.description}
+                      <br />
+                    </pre>
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                     {item.isSolved && (
@@ -109,7 +112,7 @@ class CustomerComplaints extends Component {
                     {!item.isSolved && (
                       <div>
                         <button
-                          className="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm  px-3 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                          className="bg-lightBlue-900 text-white active:bg-blueGray-600 text-sm  px-3 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
                           onClick={() => this.handleResolved(item._id)}
                         >
                           Resolved
