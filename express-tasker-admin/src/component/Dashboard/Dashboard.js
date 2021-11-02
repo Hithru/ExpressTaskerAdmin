@@ -15,49 +15,49 @@ export default function Dashboard() {
             <div className="flex flex-wrap">
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
-                  statSubtitle="TRAFFIC"
-                  statTitle="350,897"
+                  statSubtitle="COMPLAINTS"
+                  statTitle="3500"
                   statArrow="up"
-                  statPercent="3.48"
+                  statPercent="348"
                   statPercentColor="text-emerald-500"
-                  statDescripiron="Since last month"
-                  statIconName="far fa-chart-bar"
+                  statDescripiron="Pending Complaints"
+                  statIconName="fas fa-exclamation-circle"
                   statIconColor="bg-red-500"
                 />
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
-                  statSubtitle="NEW USERS"
+                  statSubtitle="VERIFICATION REQUESTS"
                   statTitle="2,356"
-                  statArrow="down"
-                  statPercent="3.48"
-                  statPercentColor="text-red-500"
-                  statDescripiron="Since last week"
-                  statIconName="fas fa-chart-pie"
+                  statArrow="up"
+                  statPercent="348"
+                  statPercentColor="text-emerald-500"
+                  statDescripiron="Pending Requests"
+                  statIconName="fas fa-certificate"
                   statIconColor="bg-orange-500"
                 />
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
-                  statSubtitle="SALES"
+                  statSubtitle="ORDERS"
                   statTitle="924"
-                  statArrow="down"
-                  statPercent="1.10"
+                  statArrow="up"
+                  statPercent="800"
                   statPercentColor="text-orange-500"
-                  statDescripiron="Since yesterday"
-                  statIconName="fas fa-users"
+                  statDescripiron="Completed Orders"
+                  statIconName="fas fa-chart-bar"
                   statIconColor="bg-pink-500"
                 />
               </div>
               <div className="w-full lg:w-6/12 xl:w-3/12 px-4">
                 <CardStats
-                  statSubtitle="PERFORMANCE"
-                  statTitle="49,65%"
+                  statSubtitle="SERVICE PROVIDERS"
+                  statTitle="4,965"
                   statArrow="up"
-                  statPercent="12"
+                  statPercent="3000"
                   statPercentColor="text-emerald-500"
-                  statDescripiron="Since last month"
-                  statIconName="fas fa-percent"
+                  statDescripiron="Verified"
+                  statIconName="fas fa-users"
                   statIconColor="bg-lightBlue-500"
                 />
               </div>
