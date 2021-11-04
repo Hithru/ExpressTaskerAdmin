@@ -27,6 +27,11 @@ if (process.env.NODE_ENV !== "test") {
     console.log("MongoDB database connection established successfully");
   });
 }
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("../build"));
+}
+
 app.use("/admin", adminRouter);
 app.use("/customer", customerComplaintRouter);
 app.use("/serviceProvider", serviceProviderComplaintRouter);

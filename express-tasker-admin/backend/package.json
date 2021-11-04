@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll --coverage --verbose --silent --runInBand"
+    "test": "jest --watchAll --coverage --verbose --silent --runInBand",
+    "build": "cd .. && npm run build",
+    "install-app": "cd .. && npm install",
+    "heroku-postbuild": "npm run install-app && npm run build",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
