@@ -30,11 +30,6 @@ if (process.env.NODE_ENV !== "test") {
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("express-tasker-admin/build"));
-  app.get("/*", function (req, res) {
-    res.sendFile(
-      path.join(__dirname, "./express-tasker-admin/build/index.html")
-    );
-  });
 }
 
 app.use("/admin", adminRouter);
