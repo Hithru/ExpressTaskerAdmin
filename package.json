@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll --coverage --verbose --silent --runInBand",
-    "build": "cd .. && npm run build",
-    "install-app": "cd .. && npm install",
+    "build": "cd express-tasker-admin && npm run build",
+    "install-app": "cd express-tasker-admin && npm install",
     "heroku-postbuild": "npm run install-app && npm run build",
     "start": "node server.js"
   },

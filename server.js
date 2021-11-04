@@ -29,7 +29,7 @@ if (process.env.NODE_ENV !== "test") {
 }
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("../build"));
+  app.use(express.static("express-tasker-admin/build"));
 }
 
 app.use("/admin", adminRouter);
