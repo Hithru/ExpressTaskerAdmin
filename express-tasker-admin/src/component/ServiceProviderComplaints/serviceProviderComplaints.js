@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ServiceProvider from "../../services/serviceProvider";
+import TableDropdown from "../Dropdown/TableDropdown.js";
 
 class ServiceProviderComplaints extends Component {
   constructor(props) {
@@ -119,6 +120,9 @@ class ServiceProviderComplaints extends Component {
                         </button>
                       </div>
                     )}
+                  </td>
+                  <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
+                    <TableDropdown email={item.serviceProvider_email} />
                   </td>
                 </tr>
               ))}
