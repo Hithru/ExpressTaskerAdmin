@@ -29,22 +29,9 @@ const serviceProviderSchema = new Schema(
   }
 );
 
-serviceProviderSchema.methods.generateAuthToken = function () {
-  const token = jwt.sign(
-    {
-      _id: this._id,
-      username: this.username,
-      email: this.email,
-      isServiceProvider: true,
-    },
-    config.get("jwtPrivateKey")
-  );
-  return token;
-};
-
 const ServiceProvider = mongoose.model(
   "ServiceProvider",
   serviceProviderSchema
 );
 
-module.exports = ServiceProvider;
+module.exports.ServiceProvider = ServiceProvider;

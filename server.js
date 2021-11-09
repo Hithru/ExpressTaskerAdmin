@@ -6,7 +6,7 @@ const config = require("config");
 const adminRouter = require("./routes/admin");
 const customerComplaintRouter = require("./routes/customer");
 const serviceProviderComplaintRouter = require("./routes/serviceProvider");
-
+const dashboardRouter = require("./routes/dashboard");
 require("dotenv").config();
 
 if (!config.get("jwtPrivateKey")) {
@@ -42,7 +42,7 @@ if (process.env.NODE_ENV === "production") {
 app.use("/admin", adminRouter);
 app.use("/customer", customerComplaintRouter);
 app.use("/serviceProvider", serviceProviderComplaintRouter);
-
+app.use("/dashboard", dashboardRouter);
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });

@@ -3,7 +3,7 @@ const {
   ServiceProviderComplaint,
 } = require("../models/serviceProviderComplaint.model");
 
-const ServiceProvider = require("../models/serviceprovider.model");
+const { ServiceProvider } = require("../models/serviceprovider.model");
 const SkillVerification = require("../models/skillVerification.model");
 
 router.post("/complaints", async (req, res) => {
