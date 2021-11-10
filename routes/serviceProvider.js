@@ -61,6 +61,8 @@ router.post("/accept", async (req, res) => {
       isaccepted: true,
     }
   );
+  if (!request)
+    return res.status(404).send("The Request with the given ID was not found.");
 
   const serviceProvider = await ServiceProvider.findByIdAndUpdate(
     request.serviceProviderId,
@@ -68,8 +70,6 @@ router.post("/accept", async (req, res) => {
       isVerified: true,
     }
   );
-  if (!request)
-    return res.status(404).send("The Request with the given ID was not found.");
 
   if (!serviceProvider)
     return res

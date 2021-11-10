@@ -16,7 +16,7 @@ afterAll(async () => await db.close());
 describe("/customer", () => {
   describe("/Complaints ", () => {
     describe("/ POST", () => {
-      it("should return 200 and array of admins objects should be recieved", async () => {
+      it("should return 200 and array of customer complaints objects should be recieved", async () => {
         await agent.post("/customer/complaints").expect(200);
       });
     });
