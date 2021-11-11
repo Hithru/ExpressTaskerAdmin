@@ -84,7 +84,7 @@ class ServiceProviderComplaints extends Component {
               {complaints.map((item) => (
                 <tr>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
-                    {item.serviceProvider_name}
+                    {item.username}
                   </td>
                   <td className="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                     {item.serviceProvider_email}
