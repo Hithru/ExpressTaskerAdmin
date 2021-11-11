@@ -3,6 +3,7 @@ const { Admin } = require("../models/admin.model");
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
 
+//Admin Register
 router.post("/signup", async (req, res) => {
   const schema = Joi.object({
     username: Joi.string().min(6).required(),
@@ -42,6 +43,7 @@ router.post("/signup", async (req, res) => {
     .send("well Done");
 });
 
+// Admin Login
 router.post("/login", async (req, res) => {
   const schema = Joi.object({
     email: Joi.string().min(6).required().email(),
@@ -60,6 +62,7 @@ router.post("/login", async (req, res) => {
   res.send(token);
 });
 
+//Getting all the admin list
 router.post("/admins", async (req, res) => {
   const admins = await Admin.find().sort("username");
 

@@ -7,6 +7,7 @@ const { Order } = require("../models/order.model");
 const { ServiceProvider } = require("../models/serviceprovider.model");
 const SkillVerification = require("../models/skillVerification.model");
 
+//Getting all the information for dashboard
 router.post("/info", async (req, res) => {
   const num_orders = await Order.countDocuments();
   const num_complete_orders = await Order.countDocuments({ status: "Closed" });
