@@ -22,7 +22,6 @@ class AddAdmin extends Form {
   doSubmit = async () => {
     try {
       const response = await Admin.register(this.state.data);
-      console.log("work");
       window.location = "/admin/admins";
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {

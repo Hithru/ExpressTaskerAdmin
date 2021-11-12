@@ -13,13 +13,10 @@ router.post("/signup", async (req, res) => {
 
   const { error } = schema.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
-  console.log("validation pass");
 
   let admin = await Admin.findOne({ email: req.body.email });
 
   if (admin) return res.status(400).send("User already registered.");
-  console.log("user exist pass");
-
   const username = req.body.username;
   const email = req.body.email.toLowerCase();
   const password = req.body.password;
@@ -30,7 +27,6 @@ router.post("/signup", async (req, res) => {
     password,
   });
 
-  console.log(admin);
   const salt = await bcrypt.genSalt(10);
   admin.password = await bcrypt.hash(admin.password, salt);
   await admin.save();
@@ -58,7 +54,7 @@ router.post("/login", async (req, res) => {
   const validPassword = await bcrypt.compare(req.body.password, admin.password);
   if (!validPassword) return res.status(400).send("Invalid email or password.");
   const token = admin.generateAuthToken();
-  console.log(admin);
+
   res.send(token);
 });
 
@@ -66,7 +62,6 @@ router.post("/login", async (req, res) => {
 router.post("/admins", async (req, res) => {
   const admins = await Admin.find().sort("username");
 
-  console.log(admins);
   res.send(admins);
 });
 

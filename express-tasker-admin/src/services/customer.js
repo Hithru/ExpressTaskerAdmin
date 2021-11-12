@@ -10,7 +10,6 @@ export function getComplaints() {
 const apiResolveEndpoint = apiUrl + "/customer/resolve";
 
 export function resolveComplaint(complaint_id) {
-  console.log(complaint_id);
   const resolve_body = { complaint_id: complaint_id };
   return http.post(apiResolveEndpoint, resolve_body);
 }

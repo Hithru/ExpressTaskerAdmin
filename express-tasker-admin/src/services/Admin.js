@@ -4,7 +4,6 @@ import { apiUrl } from "../config.json";
 const apiRegisterEndpoint = apiUrl + "/admin/signup";
 
 export function register(user) {
-  console.log(user);
   return http.post(apiRegisterEndpoint, {
     email: user.email,
     password: user.password,

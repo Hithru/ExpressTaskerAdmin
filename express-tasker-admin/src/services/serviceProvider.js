@@ -10,7 +10,6 @@ export function getComplaints() {
 const apiResolveEndpoint = apiUrl + "/serviceProvider/resolve";
 
 export function resolveComplaint(complaint_id) {
-  console.log(complaint_id);
   const resolve_body = { complaint_id: complaint_id };
   return http.post(apiResolveEndpoint, resolve_body);
 }
@@ -24,7 +23,6 @@ export function getRequests() {
 const apiDeclineEndpoint = apiUrl + "/serviceProvider/decline";
 
 export function declineRequest(request_id) {
-  console.log(request_id);
   const resolve_body = { request_id: request_id };
   return http.post(apiDeclineEndpoint, resolve_body);
 }
@@ -32,7 +30,6 @@ export function declineRequest(request_id) {
 const apiAcceptEndpoint = apiUrl + "/serviceProvider/accept";
 
 export function acceptRequest(request_id) {
-  console.log(request_id);
   const resolve_body = { request_id: request_id };
   return http.post(apiAcceptEndpoint, resolve_body);
 }

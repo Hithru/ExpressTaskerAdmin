@@ -16,7 +16,7 @@ class DashBoard extends Component {
   async componentDidMount() {
     const data_array = await Dashboard.getInfo();
     const info = data_array.data;
-    console.log("dsfsdf", info);
+
     this.setState({ info });
   }
   render() {

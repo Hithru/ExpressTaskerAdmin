@@ -10,7 +10,7 @@ const SkillVerification = require("../../../models/skillVerification.model");
 const { ServiceProvider } = require("../../../models/serviceprovider.model");
 // Pass supertest agent for each test
 const agent = request.agent(app);
-console.log(agent);
+
 // Setup connection to the database
 beforeAll(async () => await db.connect());
 beforeEach(async () => await db.clear());
@@ -46,7 +46,6 @@ describe("/serviceProvider", () => {
           data = newServiceProviderComplaint;
         });
 
-        console.log("resend Data", data);
         await agent
           .post("/serviceProvider/resolve")
           .send({
@@ -99,7 +98,6 @@ describe("/serviceProvider", () => {
           data = newVerificationRequest;
         });
 
-        console.log("resend Data", data);
         await agent
           .post("/serviceProvider/decline")
           .send({
@@ -163,7 +161,6 @@ describe("/serviceProvider", () => {
           data = newVerificationRequest;
         });
 
-        console.log("resend Data", data);
         await agent
           .post("/serviceProvider/accept")
           .send({
@@ -214,7 +211,6 @@ describe("/serviceProvider", () => {
           data = newVerificationRequest;
         });
 
-        console.log("resend Data", data);
         await agent
           .post("/serviceProvider/accept")
           .send({
@@ -266,7 +262,6 @@ describe("/serviceProvider", () => {
         data = newVerificationRequest;
       });
 
-      console.log("resend Data", data);
       await agent
         .post("/serviceProvider/accept")
         .send({

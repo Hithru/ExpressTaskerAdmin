@@ -7,7 +7,7 @@ const {
 } = require("../../../models/customerComplaint.model");
 // Pass supertest agent for each test
 const agent = request.agent(app);
-console.log(agent);
+
 // Setup connection to the database
 beforeAll(async () => await db.connect());
 beforeEach(async () => await db.clear());
@@ -43,7 +43,6 @@ describe("/customer", () => {
           data = newCustomerComplaint;
         });
 
-        console.log("resend Data", data);
         await agent
           .post("/customer/resolve")
           .send({
